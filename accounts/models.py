@@ -11,7 +11,7 @@ from .managers import UserManager
 
 class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(_('email address'), blank=True)
-    phone_number = models.IntegerField(_('phone number'), unique=True)
+    phone_number = models.CharField(_('phone number'), max_length=10, unique=True)
     first_name = models.CharField(_('first name'), max_length=30, blank=True)
     last_name = models.CharField(_('last name'), max_length=30, blank=True)
     gender = models.CharField(_('gender'), max_length=10, blank=True)
