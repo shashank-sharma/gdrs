@@ -99,16 +99,19 @@ if not production:
         }
     }
 else:
+    print('PRODUCTION: True')
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'djangogirls',
+            'NAME': 'elibrary',
             'USER': 'name',
             'PASSWORD': '',
             'HOST': 'localhost',
-            'PORT': '5432',
+            'PORT': '',
         }
     }
+    db_from_env = dj_database_url.config(conn_max_age=500)
+    DATABASES['default'].update(db_from_env)
 
 # db_from_env = dj_database_url.config(conn_max_age=500)
 # DATABASES['default'].update(db_from_env)
