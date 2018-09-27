@@ -16,6 +16,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from client import views as clientviews
+from accounts import views as accountviews
 from rest_framework import routers
 from api.views import UserViewSet
 
@@ -25,6 +26,7 @@ router.register(r'users', UserViewSet)
 urlpatterns = [
     url(r'^$',clientviews.home),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^login', accountviews.login),
     url(r'^admin/', admin.site.urls),
     url(r'^hello/', include(router.urls)),
 ]
