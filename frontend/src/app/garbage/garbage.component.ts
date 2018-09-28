@@ -9,8 +9,9 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 export class GarbageComponent implements OnInit {
 
   public inputCount = 1;
+  public phoneNumber = '';
 
-  constructor(private http: HttpClient,) { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
   }
@@ -22,10 +23,12 @@ export class GarbageComponent implements OnInit {
       }),
       withCredentials: true
     };
-    console.log(this.loginJson.getRawValue());
-
-    this.http.post('http://niti.herokuapp.com/api/client_login', this.loginJson.getRawValue(), httpOptions).subscribe((response) => {
-      console.log(response);
+    this.http.post('http://niti.herokuapp.com/api/client_login_check', {'phone_number': this.phoneNumber}, httpOptions).subscribe((response) => {
+      if (response['status'] == 'true') {
+        this.inputCount += 2;
+      } else {
+        this.inputCount += 1;
+      }
     }, (error) => {
       console.log(error);
     });

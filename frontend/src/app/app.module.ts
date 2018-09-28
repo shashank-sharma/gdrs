@@ -17,6 +17,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { GarbageComponent } from './garbage/garbage.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import {FormsModule} from '@angular/forms';
 
 
 
@@ -43,7 +44,8 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
