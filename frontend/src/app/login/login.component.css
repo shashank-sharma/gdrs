@@ -1,0 +1,30 @@
+#container
+{
+    position: relative;
+    background-color:#149159 !important;
+    height: 100%;
+    width: 100%;
+    
+   
+    
+}
+
+#login-card
+{
+    position: absolute;
+    height:40%;
+    width:60%;
+    margin-top: 90px;
+    margin-left: 20%;
+    background-color:#149159;
+}
+.phone
+{
+    margin-top:10px;
+
+     
+}
+.top-icon
+{
+    padding-top:10px;
+}
