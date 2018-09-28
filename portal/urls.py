@@ -18,7 +18,7 @@ from django.contrib import admin
 from client import views as clientviews
 from accounts import views as accountviews
 from rest_framework import routers
-from api.views import UserViewSet
+from api.views import UserViewSet, nearest_request
 
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
@@ -26,7 +26,7 @@ router.register(r'users', UserViewSet)
 urlpatterns = [
     url(r'^$',clientviews.home),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^login', accountviews.login),
     url(r'^admin/', admin.site.urls),
-    url(r'^hello/', include(router.urls)),
+    url(r'^api/v1/', include(router.urls)),
+    url(r'^api/', include('api.urls')),
 ]

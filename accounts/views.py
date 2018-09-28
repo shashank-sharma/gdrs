@@ -19,3 +19,17 @@ def login(request):
         return Response({"token": token.key})
     except:
         return Response({"error": "Login failed"}, status=HTTP_401_UNAUTHORIZED)
+
+
+@api_view(['POST'])
+def driver_login(request):
+    phone_number = request.data.get('phone_number')
+    password = request.data.get('password')
+
+    try:
+        user = User.objects.get(phone_number=phone_number, passowrd=password, is_worker=True)
+        token, _ = Token.objects.get_or_create(user=user)
+        return Response({"token": token.key})
+    except:
+        return Response({"error": "Login failed"}, status=HTTP_401_UNAUTHORIZED)
+
