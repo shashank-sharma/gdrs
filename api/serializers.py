@@ -1,6 +1,6 @@
 from rest_framework.serializers import ModelSerializer
 from accounts.models import User
-from client.models import GarbaseStatus
+from client.models import GarbageStatus
 
 
 class UserSerializer(ModelSerializer):
@@ -13,5 +13,5 @@ class UserSerializer(ModelSerializer):
 class GarbageStatusSerializer(ModelSerializer):
 
     class Meta:
-        model = GarbaseStatus
+        model = GarbageStatus
         fields = '__all__'

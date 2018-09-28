@@ -1,12 +1,15 @@
+from django.http import HttpResponse
 from django.shortcuts import render
 from rest_framework import routers, serializers, viewsets
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.status import HTTP_401_UNAUTHORIZED
+from django.core import serializers as django_serializers
 from accounts.models import User
 from api.serializers import UserSerializer, GarbageStatusSerializer
-from client.models import GarbaseStatus
+from client.models import GarbageStatus
 import math
+import json
 
 
 def dtwor(deg):
@@ -27,19 +30,20 @@ def distance_between_two(lat1, lon1, lat2, lon2):
 
 @api_view(['POST'])
 def nearest_request(request):
-    worker_lat = request.data['lat']
-    worker_lon = request.data['lon']
-    all_status = GarbaseStatus.objects.all(status='In-Progress')
+    worker_lat = float(request.data['lat'])
+    worker_lon = float(request.data['lon'])
+    all_status = GarbageStatus.objects.filter(status='In-Progress')
     lowest = 10000
     lowest_data = None
     for status in all_status:
-        temp_distance = distance_between_two(status.lat, status.lon, worker_lat, worker_lon)
+        temp_distance = distance_between_two(float(status.lat), float(status.long), worker_lat, worker_lon)
         if temp_distance < lowest:
             lowest = temp_distance
             lowest_data = status
 
     if lowest_data:
-        return serializers.serialize('json', lowest_data)
+        data = django_serializers.serialize("json", [lowest_data, ])
+        return HttpResponse(data)
     else:
         return Response({"status": "Not found"})
 
@@ -52,5 +56,5 @@ class UserViewSet(viewsets.ModelViewSet):
 
 
 class GarbageStatusViewSet(viewsets.ModelViewSet):
-    queryset = GarbaseStatus.objects.all()
+    queryset = GarbageStatus.objects.all()
     serializer_class = GarbageStatusSerializer

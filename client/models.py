@@ -4,7 +4,7 @@ from worker.models import Driver
 
 
 # Create your models here.
-class GarbaseStatus(models.Model):
+class GarbageStatus(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     long = models.DecimalField(max_digits=15, decimal_places=8)
     lat = models.DecimalField(max_digits=15, decimal_places=8)
