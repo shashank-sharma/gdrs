@@ -12,14 +12,15 @@ from .managers import UserManager
 class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(_('email address'), blank=True)
     phone_number = models.CharField(_('phone number'), max_length=10, unique=True)
-    first_name = models.CharField(_('first name'), max_length=30, blank=True)
+    first_name = models.CharField(_('first name'), max_length=30, blank=False)
     last_name = models.CharField(_('last name'), max_length=30, blank=True)
-    gender = models.CharField(_('gender'), max_length=10, blank=True)
+    gender = models.CharField(_('gender'), max_length=10, blank=False)
     date_joined = models.DateTimeField(_('date joined'), auto_now_add=True)
     is_active = models.BooleanField(_('active'), default=True)
     is_client = models.BooleanField(_('client'), default=False)
     is_worker = models.BooleanField(_('worker'), default=False)
     avatar = models.ImageField(upload_to='avatars/', null=True, blank=True)
+    otp = models.CharField(max_length=4, null=False, blank=False, default=True)
 
     objects = UserManager()
 
