@@ -151,7 +151,11 @@ module.exports = {
     "filename": "[name].bundle.js",
     "chunkFilename": "[id].chunk.js",
     "crossOriginLoading": false,
+<<<<<<< HEAD
     //"publicPath":"http://127.0.0.1:8000/static/ang/"
+=======
+    // "publicPath":"http://niti.herokuapp.com/static/ang/"
+>>>>>>> ef9262735da44a5fe2c3627e6625fdf2f8c6f3f2
   },
   "module": {
     "rules": [
@@ -539,6 +543,10 @@ module.exports = {
   },
   "devServer": {
     "historyApiFallback": true,
+<<<<<<< HEAD
     //"publicPath":  "http://127.0.0.1:8000/static/ang/",
+=======
+    //"publicPath":  "http://niti.herokuapp.com/static/ang/",
+>>>>>>> ef9262735da44a5fe2c3627e6625fdf2f8c6f3f2
   }
 };
