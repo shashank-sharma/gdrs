@@ -24,7 +24,7 @@ export class GarbageComponent implements OnInit {
     };
     console.log(this.loginJson.getRawValue());
 
-    this.http.post('http://niti.herokuapp.com/rest-auth/login/', this.loginJson.getRawValue(), httpOptions).subscribe((response) => {
+    this.http.post('http://niti.herokuapp.com/api/client_login', this.loginJson.getRawValue(), httpOptions).subscribe((response) => {
       console.log(response);
     }, (error) => {
       console.log(error);
