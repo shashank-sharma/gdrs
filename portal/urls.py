@@ -18,10 +18,11 @@ from django.contrib import admin
 from client import views as clientviews
 from accounts import views as accountviews
 from rest_framework import routers
-from api.views import UserViewSet, nearest_request
+from api.views import UserViewSet, GarbageStatusViewSet
 
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
+router.register(r'garbage_status', GarbageStatusViewSet)
 
 urlpatterns = [
     url(r'^$',clientviews.home),
