@@ -13,25 +13,37 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { RegisterComponent } from './register/register.component';
 
+import { RouterModule, Routes } from '@angular/router';
+import { GarbageComponent } from './garbage/garbage.component';
+
+import { HttpClientModule } from '@angular/common/http';
+
+
+
+const appRoutes: Routes = [
+  {path: '', component: HomeComponent},
+  {path: 'about', component: AboutComponent},
+  {path: 'register', component: RegisterComponent},
+  {path: 'garbage', component: GarbageComponent}
+];
+
 
 
 @NgModule({
   declarations: [
-
     AppComponent,
     NavbarComponent,
     WasteTypesComponent,
     HomeComponent,
-  
-
-    
-
-    AppComponent,    
-    AboutComponent, RegisterComponent
-
+    AppComponent,
+    AboutComponent,
+    RegisterComponent,
+    GarbageComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
