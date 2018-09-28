@@ -28,12 +28,12 @@ def distance_between_two(lat1, lon1, lat2, lon2):
 @api_view(['POST'])
 def nearest_request(request):
     worker_lat = request.data['lat']
-    worker_lan = request.data['lan']
+    worker_lon = request.data['lon']
     all_status = GarbaseStatus.objects.all(status='In-Progress')
     lowest = 10000
     lowest_data = None
     for status in all_status:
-        temp_distance = distance_between_two(status.lat, status.lon, worker_lat, worker_lan)
+        temp_distance = distance_between_two(status.lat, status.lon, worker_lat, worker_lon)
         if temp_distance < lowest:
             lowest = temp_distance
             lowest_data = status
