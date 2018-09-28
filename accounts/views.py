@@ -16,7 +16,7 @@ def login(request):
         user = User.objects.get(phone_number=phone_number, password=password)
         print(user)
         token, _ = Token.objects.get_or_create(user=user)
-        return Response({"token": token.key})
+        return Response({"token": token.key, 'id': token.user_id})
     except:
         return Response({"error": "Login failed"}, status=HTTP_401_UNAUTHORIZED)
 
