@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import * as mapboxgl from 'mapbox-gl';
 import { GeoJson, FeatureCollection } from '../map';
 import * as turf from '@turf/turf';
@@ -9,13 +9,14 @@ declare var $: any;
 @Component({
   selector: 'map-box',
   templateUrl: './map-box.component.html',
-  styleUrls: ['./map-box.component.css']
+  styleUrls: ['./map-box.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class MapBoxComponent implements OnInit{
 
 
   public truckLocation = [-83.093, 42.376];
-  public warehouseLocation = [-83.093, 42.376];
+  public warehouseLocation = [73.7979971, 18.5559074];
   public lastQueryTime = 0;
   public lastAtRestaurant = 0;
   public keepTrack = [];
@@ -34,8 +35,8 @@ export class MapBoxComponent implements OnInit{
   /// default settings
   map: mapboxgl.Map;
   style = 'mapbox://styles/mapbox/light-v9';
-  lat = -83.093;
-  lng = 42.376;
+  lat = 18.5559074;
+  lng = 73.7979971;
   message = 'Hello World!';
 
   // data
@@ -48,6 +49,25 @@ export class MapBoxComponent implements OnInit{
 
   ngOnInit() {
     console.log('loading');
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(position => {
+        this.lat = position.coords.latitude;
+        this.lng = position.coords.longitude;
+        this.map.flyTo({
+          center: [(this.lng + this.warehouseLocation[0]) / 2, (this.lat + this.warehouseLocation[1]) / 2]
+        });
+        const marker = document.createElement('div');
+        marker.classList.add('truck');
+
+        // Create a new marker
+        const truckMarker = new mapboxgl.Marker(marker)
+          .setLngLat([this.lng, this.lat])
+          .addTo(this.map);
+
+        this.truckLocation = [this.lng, this.lat];
+      });
+    }
+
     this.map = new mapboxgl.Map({
       container: 'map',
       style: this.style,
@@ -171,14 +191,6 @@ export class MapBoxComponent implements OnInit{
       }, 'waterway-label');
 
 
-      const marker = document.getElementById('#map');
-
-      // Create a new marker
-      const truckMarker = new mapboxgl.Marker(marker)
-        .setLngLat(this.truckLocation)
-        .addTo(this.map);
-
-
     });
   }
 
@@ -203,6 +215,7 @@ export class MapBoxComponent implements OnInit{
     };
 
     this.http.get(this.assembleQueryURL(), httpOptions).subscribe((data: any) => {
+      console.log(data);
       let routeGeoJSON = turf.featureCollection([turf.feature(data.trips[0].geometry)]);
       if (!data.trips[0]) {
         routeGeoJSON = this.nothing;
@@ -219,29 +232,6 @@ export class MapBoxComponent implements OnInit{
     }, (error) => {
       console.log(error);
     });
-
-    // Make a request to the Optimization API
-    // $.ajax({
-    //   method: 'GET',
-    //   url: this.assembleQueryURL(),
-    // }).done(function(data) {
-    //   // Create a GeoJSON feature collection
-    //   let routeGeoJSON = turf.featureCollection([turf.feature(data.trips[0].geometry)]);
-    //
-    //   // If there is no route provided, reset
-    //   if (!data.trips[0]) {
-    //     routeGeoJSON = this.nothing;
-    //   } else {
-    //     // Update the `route` source by getting the route source
-    //     // and setting the data equal to routeGeoJSON
-    //     this.map.getSource('route')
-    //       .setData(routeGeoJSON);
-    //   }
-    //
-    //   if (data.waypoints.length === 12) {
-    //     window.alert('Maximum number of points reached. Read more at mapbox.com/api-documentation/#optimization.');
-    //   }
-    // });
   }
 
   updateDropoffs(geojson) {
@@ -272,7 +262,7 @@ export class MapBoxComponent implements OnInit{
       if (needToPickUp) {
         this.restaurantIndex = coordinates.length;
         // Add the restaurant as a coordinate
-        coordinates.push(this.warehouseLocation);
+        // coordinates.push(this.warehouseLocation);
         // push the restaurant itself into the array
         this.keepTrack.push(this.pointHopper.warehouse);
       }
@@ -288,9 +278,12 @@ export class MapBoxComponent implements OnInit{
       });
     }
 
+
+    console.log(coordinates);
+
     // Set the profile to `driving`
     // Coordinates will include the current location of the truck,
-    return 'https://api.mapbox.com/optimized-trips/v1/mapbox/driving/' + coordinates.join(';') + '?distributions=' + distributions.join(';') + '&overview=full&steps=true&geometries=geojson&source=first&access_token=' + mapboxgl.accessToken;
+    return 'https://api.mapbox.com/optimized-trips/v1/mapbox/driving/' + coordinates.join(';') + ';' + this.warehouseLocation[0] + ',' + this.warehouseLocation[1] + '?overview=full&steps=true&annotations=duration,distance,speed&geometries=geojson&source=first&destination=last&roundtrip=false&access_token=' + mapboxgl.accessToken;
   }
 
   objectToArray(obj) {
