@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 
+
+
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { WasteTypesComponent } from './waste-types/waste-types.component';
@@ -32,6 +34,8 @@ const appRoutes: Routes = [
   {path: 'garbage', component: GarbageComponent},
   {path: 'waste', component: WasteTypesComponent},
   {path: 'admin', component: AdminComponent},
+  {path: 'worker-login' , component:WorkerloginComponent},
+  {path: 'mapbox' , component:MapBoxComponent},
   {path: 'map', component: MapBoxComponent}
 ];
 

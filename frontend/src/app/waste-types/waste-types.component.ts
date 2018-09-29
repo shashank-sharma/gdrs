@@ -8,12 +8,13 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 })
 export class WasteTypesComponent implements OnInit {
 
-  public inputCount = 1;
-  public wasteType = ' ';
-  public quantity = ' ';
-  public nextStatus = false;
-  public lat: any;
-  public lng: any;
+	public inputCount  = 1;
+	public wasteType = ' ';
+	public quantity = ' ';
+	public nextStatus = false;
+	public lat: any;
+	public lng: any;
+
 
   constructor(private http: HttpClient) {
   }
@@ -100,3 +101,4 @@ export class WasteTypesComponent implements OnInit {
     this.next();
   }
 }
+
