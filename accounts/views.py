@@ -25,7 +25,7 @@ def driver_login(request):
     password = request.data.get('password')
 
     try:
-        user = User.objects.get(phone_number=phone_number, passowrd=password, is_worker=True)
+        user = User.objects.get(phone_number=phone_number, password=password, is_worker=True)
         token, _ = Token.objects.get_or_create(user=user)
         return Response({"token": token.key})
     except:
