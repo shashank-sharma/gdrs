@@ -12,8 +12,8 @@ export class WasteTypesComponent implements OnInit {
 	public wasteType = " ";
 	public quantity = " ";
 	public nextStatus = false;
-	public lat = " ";
-	public lng = " ";
+	public lat:any;
+	public lng:any;
 
   constructor(private http: HttpClient) { }
 
@@ -61,7 +61,6 @@ next() {
       this.showMap();
     } else if (this.inputCount == 2) {
       this.showTypes();
-      this.registrationStatus = true;
     } else if (this.inputCount == 3) {
       this.showQuantity();
     }else if (this.inputCount == 4) {
@@ -88,9 +87,9 @@ getValue(i) {
 	        this.lat = position.coords.latitude;
 	        this.lng = position.coords.longitude;
 	        console.log(this.lat, this.lng);
-	        }
+	        });
 	    }else{ 
-	        this.x.innerHTML = "Geolocation is not supported by this browser.";
+	        console.log("Geolocation is not supported by this browser.");
 	    }
 	    this.next();
 	}
