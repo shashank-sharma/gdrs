@@ -25,6 +25,7 @@
 
     </div>
     <div class="mid-pane">
+      <div id="hide-map" *ngIf="clicked == false" (click)="changeStatus()"><i class="material-icons hide-icons-map">play_arrow</i></div>
       <div id='map' class='contain'></div>
     </div>
     <div class="bottom-pane">

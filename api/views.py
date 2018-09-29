@@ -50,6 +50,32 @@ def nearest_request(request):
 
 
 
+@api_view(['POST'])
+def nearest_request_group(request):
+    worker_lat = float(request.data['lat'])
+    worker_lon = float(request.data['lon'])
+    all_status = GarbageStatus.objects.filter(status='In-Progress')
+    json_data = {}
+    for status in all_status:
+        temp_distance = distance_between_two(float(status.lat), float(status.long), worker_lat, worker_lon)
+        json_data[temp_distance] = status
+
+    final_data = []
+    count = 1
+
+    keylist = json_data.keys()
+    keylist.sort()
+    for key in keylist:
+        final_data.push(json_data[key])
+
+    if final_data:
+        data = django_serializers.serialize("json", final_data[1:10])
+        return HttpResponse(data)
+    else:
+        return Response({"status": "Not found"})
+
+
+
 # Create your views here.
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()

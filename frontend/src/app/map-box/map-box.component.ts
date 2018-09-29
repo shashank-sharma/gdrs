@@ -14,6 +14,8 @@ declare var $: any;
 })
 export class MapBoxComponent implements OnInit{
 
+  public clicked = false;
+
 
   public truckLocation = [-83.093, 42.376];
   public warehouseLocation = [73.7979971, 18.5559074];
@@ -199,6 +201,7 @@ export class MapBoxComponent implements OnInit{
   }
 
   newDropoff(coords) {
+    console.log(coords);
     // Store the clicked point as a new GeoJSON feature with
     // two properties: `orderTime` and `key`
     const pt = turf.point(
@@ -235,6 +238,7 @@ export class MapBoxComponent implements OnInit{
   }
 
   updateDropoffs(geojson) {
+    console.log(geojson);
     this.map.getSource('dropoffs-symbol')
       .setData(geojson);
   }
@@ -292,6 +296,32 @@ export class MapBoxComponent implements OnInit{
       return obj[key];
     });
     return routeGeoJSON;
+  }
+
+  changeStatus() {
+    this.clicked = true;
+    this.getFirstRequest();
+  }
+
+  getFirstRequest() {
+    console.log('this.lat =', this.lat, this.lng);
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+      withCredentials: true
+    };
+    this.http.post('http://niti.herokuapp.com/api/nearest_request', {'lat': this.lat, 'lon': this.lng}, httpOptions).subscribe((response) => {
+      if (response[0]['pk']) {
+        this.newDropoff({lng: parseFloat(response[0]['fields']['long']), lat: parseFloat(response[0]['fields']['lat'])});
+        this.updateDropoffs(this.dropoffs);
+      } else {
+        alert('Error');
+      }
+    }, (error) => {
+      console.log(error);
+    });
   }
 
 
