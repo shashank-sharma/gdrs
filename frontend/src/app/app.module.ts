@@ -28,7 +28,7 @@ const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'about', component: AboutComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'garbage', component: GarbageComponent}
+  {path: 'garbage', component: GarbageComponent},
   {path: 'admin', component: AdminComponent}
 ];
 
