@@ -4,6 +4,7 @@ from rest_framework import routers, serializers, viewsets
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.status import HTTP_401_UNAUTHORIZED
+from rest_framework.views import APIView
 from django.core import serializers as django_serializers
 from accounts.models import User
 from api.serializers import UserSerializer, GarbageStatusSerializer
@@ -55,6 +56,28 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
 
 
+
 class GarbageStatusViewSet(viewsets.ModelViewSet):
     queryset = GarbageStatus.objects.all()
     serializer_class = GarbageStatusSerializer
+
+
+class GarbageStatusUpdate(APIView):
+
+    def post(self, request):
+        id = request.data.get('id', None)
+        print(id)
+        if not id:
+            # perform creation
+            serializer = GarbageStatusSerializer(data=request.data)
+        else:
+            # perform updation
+            product_discount_controll = GarbageStatus.objects.get(id=int(id))
+            print(product_discount_controll)
+            serializer = GarbageStatusSerializer(product_discount_controll, data=request.data)
+
+        if (serializer.is_valid()):
+            serializer.save()
+            return Response(True)
+        else:
+            return Response(serializer.errors)

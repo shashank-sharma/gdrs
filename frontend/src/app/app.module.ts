@@ -23,7 +23,6 @@ import {FormsModule} from '@angular/forms';
 import { MapBoxComponent } from './map-box/map-box.component';
 import { WorkerloginComponent } from './workerlogin/workerlogin.component';
 import { AdminComponent } from './admin/admin.component';
-import {MapService} from './map.service';
 
 
 
