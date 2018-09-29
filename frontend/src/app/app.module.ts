@@ -30,7 +30,9 @@ const appRoutes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'garbage', component: GarbageComponent},
   {path: 'waste', component: WasteTypesComponent},
-  {path: 'admin', component: AdminComponent}
+  {path: 'admin', component: AdminComponent},
+  {path: 'worker-login' , component:WorkerloginComponent},
+  {path: 'mapbox' , component:MapBoxComponent}
 ];
 
 
