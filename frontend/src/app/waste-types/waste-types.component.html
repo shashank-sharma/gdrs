@@ -1,56 +1,64 @@
-<h3 class = "center green-text flow-text" style = "font-size: 48px">Select Type of Waste</h3><br>
-<div class="row">
-	<div class = "col s4 m2 l2">
-		<a href = "" class = "btn green darken-4" style = "width:100%; height:500px"><h5 class = "white-text flow-text">Liquid Waste</h5><br><br>
-			<img src = "https://ubisafe.org/images/dropt-clipart-one-water-3.png" style = "height:60%">
-		</a>
+
+<app-navbar></app-navbar>
+
+
+<!--Map-->
+<div class = "container" *ngIf = "inputCount == 1">
+	<p>Map daalo</p>
+	<a class="btn" (click)="getLocation()" href="javascript: void(0);" id = "longlat">Next</a>
+</div>
+
+<!--Types of waste-->
+
+<div class = "container" *ngIf = "inputCount == 2" style = "margin-top: 400px;">
+	<h1 class = "green-text text-darken-4 flow-text" style = "font-size: 48px; margin-left:425px">Select type of waste</h1><hr style="border-color: green; width:420px; margin-right: 430px; margin-top: -20px">
+	<div class = "row" style = "margin-top: 30px">
+		<div class = "col s12 m4 l4">
+			<a href = "javascript: void(0);" class = "btn green darken-4" (click)="getValue('Liquid')" style = "width:100%;">Liquid</a>
+		</div>
+		<div class = "col s12 m4 l4">
+			<a href = "javascript: void(0);" class = "btn green darken-4" (click)="getValue('Solid')" style = "width:100%;">Solid</a>
+		</div>
+		<div class = "col s12 m4 l4">
+			<a href = "javascript: void(0);" class = "btn green darken-4" (click)="getValue('Organic')" style = "width:100%;">Organic</a>
+		</div>
 	</div>
-	<div class = "col s4 m2 l2">
-		<a href = "" class = "btn green darken-4" style = "width:100%; height:500px"><h5 class = "white-text flow-text">Solid Waste</h5>
-			<img src = "https://png2.kisspng.com/20180301/lgq/kisspng-earth-municipal-solid-waste-planet-illustration-waste-pollution-on-the-earth-5a97b0ac7cebb6.7779388715198906045117.png" style="height:75%">
-		</a>
-	</div>
-	<div class = "col s4 m2 l2">
-		<a href = "" class = "btn green darken-4" style = "width:100%; height:500px"><h5 class = "white-text flow-text">Organic Waste</h5>
-			<img src = "http://www.wm.com/location/california/antelope-valley/_images/cart_sm_blue.png" style = "height:75%">
-		</a>
+	<div class = "row">
+		<div class = "col s12 m4 l4">
+			<a href = "javascript: void(0);" class = "btn green darken-4" (click)="getValue('Recyclable')" style = "width:100%;">Recyclable</a>
+		</div>
+		<div class = "col s12 m4 l4">
+			<a href = "javascript: void(0);" class = "btn green darken-4" (click)="getValue('Hazardous')" style = "width:100%;">Hazardous</a>
+		</div>
+		<div class = "col s12 m4 l4">
+			<a href = "javascript: void(0);" class = "btn green darken-4" (click)="getValue('Misc')" style = "width:100%;">Misc</a>
+		</div>
 	</div>
 </div>
-<div class = "row">
-	<div class = "col s4 m2 l2">
-		<a href = "" class = "btn green darken-4" style = "width:100%; height:500px"><h5 class = "white-text flow-text">Recyclable Waste</h5><br>
-			<img src = "https://cdn.freebiesupply.com/logos/large/2x/recycling-2-logo-png-transparent.png" style = "height:75%">
-		</a>
-	</div>
-	<div class = "col s4 m2 l2">
-		<a href = "" class = "btn green darken-4" style = "width:100%; height:500px"><h5 class = "white-text flow-text">Hazardous Waste</h5>
-			<img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Attention_Sign.svg/1169px-Attention_Sign.svg.png" style = "height:75%">
-		</a>
-	</div>
-	<div class = "col s4 m2 l2">
-		<a href = "" class = "btn green darken-4" style = "width:100%; height:500px"><h5 class = "white-text flow-text">Misc Waste</h5>
-			<img src = "https://img00.deviantart.net/0bab/i/2018/106/0/d/garbage_bags_on_a_transparent_background__by_prussiaart-dc8zti3.png" style = "height:75%">
-		</a>
-	</div>
-</div><br>
-<hr>
-<br>
-<h3 class = "center green-text flow-text" style = "font-size: 48px">Select Quantity of Waste</h3><br>
-<div class = "row">
-	<div class = "col s4 m4 l4">
-		<a href = "" class = "btn green darken-4 white-text flow-text" style = "width:100%; height:500px"><h5 style = "padding-top: 5px;">Small</h5><br>
-			<img src = "https://img.clipartxtras.com/a0a0c053fadb87f56279e9c77f72a9cb_52-plastic-bag-pictures-plastic-bags-packaging-metro-waste-plastic-bag-clipart-transparent_1600-1944.png" style = "height:400px;">
-		</a>
-	</div>
-	<div class = "col s4 m4 l4">
-		<a href = "" class = "btn green darken-4 white-text flow-text" style = "width:100%; height:500px"><h5 style = "padding-top: 5px;">Medium</h5>
-			<br>
-			<img src = "http://www.stickpng.com/assets/images/5895feefcba9841eabab60ad.png" style = "height:400px">
-		</a>
-	</div>
-	<div class = "col s4 m4 l4">
-		<a href = "" class = "btn green darken-4 white-text flow-text" style = "width:100%; height:500px"><h5 style = "padding-top: 5px;">Large</h5>
-			<img src = "https://ecodisposalpa.com/images/warrington%20pa%20eco%20friendly%20junk%20removal%20.png?crc=3957872840" style = "height: 400px; width: 550px">
-		</a>
+
+
+
+<!--Quantity of waste-->
+<div class = "container" *ngIf = "inputCount == 3" style = "margin-top: 450px; margin-left: 450px">
+	<h1 class = "green-text text-darken-4 flow-text" style = "font-size: 48px; margin-left:225px">Select quantity of waste</h1><hr style="border-color: green; width:500px; margin-right: 550px; margin-top: -20px">
+	<div class = "row" style = "margin-top:30px">
+		<div class = "col s12 m4 l4">
+			<a href = "javascript: void(0)" class = "btn green darken-4" (click) = "getquantity(1)">Small</a>
+		</div>
+		<div class = "col s12 m4 l4">
+			<a href = "javascript: void(0)" class = "btn green darken-4" (click) = "getquantity(2)">Medium</a>
+		</div>
+		<div class = "col s12 m4 l4">
+			<a href = "javascript: void(0)" class = "btn green darken-4" (click) = "getquantity(3)">Large</a>
+		</div>
 	</div>
 </div>
+
+<!-- Status-->
+<div class="container" *ngIf = "inputCount == 4" style = "margin-top: 300px;">
+	<h1>Status:</h1>
+	<a href = "javascript: void(0)" class = "btn green darken-4" (click) = "validateStatus()">Next</a>
+</div>
+
+
+
