@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="conatiner">
 	<div class="row" *ngIf="inputCount == 1">
 		<div class="col s12 m4 l4 ">
@@ -9,3 +10,69 @@
 		</div>
 	</div>
 <div>
+=======
+
+<app-navbar></app-navbar>
+
+
+<!--Map-->
+<div class = "container" *ngIf = "inputCount == 1">
+	<p>Map daalo</p>
+	<a class="btn" (click)="getLocation()" href="javascript: void(0);" id = "longlat">Next</a>
+</div>
+
+<!--Types of waste-->
+
+<div class = "container" *ngIf = "inputCount == 2" style = "margin-top: 400px;">
+	<h1 class = "green-text text-darken-4 flow-text" style = "font-size: 48px; margin-left:425px">Select type of waste</h1><hr style="border-color: green; width:420px; margin-right: 430px; margin-top: -20px">
+	<div class = "row" style = "margin-top: 30px">
+		<div class = "col s12 m4 l4">
+			<a href = "javascript: void(0);" class = "btn green darken-4" (click)="getValue('Liquid')" style = "width:100%;">Liquid</a>
+		</div>
+		<div class = "col s12 m4 l4">
+			<a href = "javascript: void(0);" class = "btn green darken-4" (click)="getValue('Solid')" style = "width:100%;">Solid</a>
+		</div>
+		<div class = "col s12 m4 l4">
+			<a href = "javascript: void(0);" class = "btn green darken-4" (click)="getValue('Organic')" style = "width:100%;">Organic</a>
+		</div>
+	</div>
+	<div class = "row">
+		<div class = "col s12 m4 l4">
+			<a href = "javascript: void(0);" class = "btn green darken-4" (click)="getValue('Recyclable')" style = "width:100%;">Recyclable</a>
+		</div>
+		<div class = "col s12 m4 l4">
+			<a href = "javascript: void(0);" class = "btn green darken-4" (click)="getValue('Hazardous')" style = "width:100%;">Hazardous</a>
+		</div>
+		<div class = "col s12 m4 l4">
+			<a href = "javascript: void(0);" class = "btn green darken-4" (click)="getValue('Misc')" style = "width:100%;">Misc</a>
+		</div>
+	</div>
+</div>
+
+
+
+<!--Quantity of waste-->
+<div class = "container" *ngIf = "inputCount == 3" style = "margin-top: 450px; margin-left: 450px">
+	<h1 class = "green-text text-darken-4 flow-text" style = "font-size: 48px; margin-left:225px">Select quantity of waste</h1><hr style="border-color: green; width:500px; margin-right: 550px; margin-top: -20px">
+	<div class = "row" style = "margin-top:30px">
+		<div class = "col s12 m4 l4">
+			<a href = "javascript: void(0)" class = "btn green darken-4" (click) = "getquantity(1)">Small</a>
+		</div>
+		<div class = "col s12 m4 l4">
+			<a href = "javascript: void(0)" class = "btn green darken-4" (click) = "getquantity(2)">Medium</a>
+		</div>
+		<div class = "col s12 m4 l4">
+			<a href = "javascript: void(0)" class = "btn green darken-4" (click) = "getquantity(3)">Large</a>
+		</div>
+	</div>
+</div>
+
+<!-- Status-->
+<div class="container" *ngIf = "inputCount == 4" style = "margin-top: 300px;">
+	<h1>Status:</h1>
+	<a href = "javascript: void(0)" class = "btn green darken-4" (click) = "validateStatus()">Next</a>
+</div>
+
+
+
+>>>>>>> f6225c811a4873996c7f13fc2618f8263d30d7ee
