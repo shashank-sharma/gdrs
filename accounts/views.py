@@ -10,11 +10,9 @@ from .models import User
 def login(request):
     phone_number = request.data.get("phone_number")
     password = request.data.get("password")
-    print(phone_number, password)
 
     try:
         user = User.objects.get(phone_number=phone_number, password=password)
-        print(user)
         token, _ = Token.objects.get_or_create(user=user)
         return Response({"token": token.key, 'id': token.user_id})
     except:
@@ -33,3 +31,14 @@ def driver_login(request):
     except:
         return Response({"error": "Login failed"}, status=HTTP_401_UNAUTHORIZED)
 
+
+
+@api_view(['POST'])
+def client_login_check(request):
+    phone_number = request.data.get('phone_number')
+    try:
+        user = User.objects.get(phone_number=phone_number)
+        if user:
+            return Response({'status': 'true'})
+    except:
+        return Response({'status': 'false'})

@@ -1,0 +1,96 @@
+<div class="navbar-fixed">
+    <nav class="navbar-color black">
+        <div class="nav-wrapper">
+            <span class="left brand-logo hide-on-small-only adm">Admin Panel</span>
+            <a href="#" data-activates="slide-out" class="left brand-logo button-collapse sidebar hide-on-large-only ">
+                <i class="material-icons">menu</i></a>
+            <ul class="right custom">
+                <li>
+                    <div class="center row hide-on-med-and-down bar-align">
+                        <div class="col s12 ">
+                            <div class="row" id="searchbar">
+                                <div class="input-field col s6 s8 white-text">
+                                    <i class="white-text material-icons prefix">search</i>
+                                    <input type="text" placeholder="search" id="autocomplete-input"
+                                           class="autocomplete black-text hide-on-small-only">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="#"><i class="material-icons">notifications</i></a></li>
+                <li>
+                    <a href="#" class="dropdown-button btn-floating" data-activates="profile_drop" data-hover='true'>
+                        <img src="" alt="gravatar" class="circle profile-image"/>
+                        Admin
+                    </a>
+                    <!-- Dropdown Structure -->
+                    <ul id='profile_drop' class='dropdown-content'>
+                        <li><a href="#!"><i class="material-icons">account_circle</i>Profile</a></li>
+                        <li><a href="#!"><i class="material-icons">settings</i>Settings</a></li>
+                        <!-- <li class="divider"></li> -->
+                        <!-- <li><a href="#!">three</a></li> -->
+                        <li><a href="#!"><i class="material-icons">view_module</i>Attendance</a></li>
+                        <li><a href="#!"><i class="material-icons">exit_to_app</i>Log Out</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<div id="main">
+    <div class="wrapper">
+        <aside>
+            <ul id="slide-out" class="side-nav fixed leftside-navigation ps-container"
+                style="overflow-x: hidden !important;">
+                <li>
+                    <div class="user-view">
+                        <!-- <div class="background">
+                           <img src="gravatar.jpg">
+                           </div> -->
+                        <a href="#!user"><img class="circle" src=""></a>
+                        <a href="#!name"><span class="gray-text name">Admin</span></a>
+                        <!-- <a href="#!email"><span class="gray-text email">admin@gmail.com</span></a> -->
+                    </div>
+                </li>
+                <li><a class="waves-effect" href=""><i class="material-icons">home</i>Home</a></li>
+                <li><a class="waves-effect" href=""><i class="material-icons">account_circle</i>Profile</a></li>
+                <li><a class="waves-effect" href=""><i class="material-icons">settings</i>Settings</a></li>
+            </ul>
+
+        </aside>
+        <div class = "row">
+            <div class = "col s12 m12 l12">
+                <div class = "card cyan darken-1 white-text" style = "height:400px"><h5>Line graph: weekly/monthly collection of garbage</h5></div>
+            </div>
+        </div>
+        <div class = "row">
+            <div class = "col s4 m4 l4">
+                <div class = "card green lighten-1 white-text" style = "height:400px"><h5>Radar graph: Types of garbage</h5></div>
+            </div>
+            <div class = "col s4 m4 l4">
+                <div class = "card green lighten-1 white-text" style = "height:400px"><h5>Pie chart: Area of garbage (school, factories, industries, etc)</h5></div>
+            </div>
+            <div class = "col s4 m4 l4">
+                <div class = "card green lighten-1 white-text" style = "height:400px"><h5>Radar graph: Quantity of garbage</h5></div>
+            </div>
+        </div>
+
+        
+            
+<!-- <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a> -->
+<!-- <script>
+    $('.button-collapse').sideNav();
+    $('.dropdown-button').dropdown({
+            inDuration: 300,
+            outDuration: 225,
+            constrainWidth: false, // Does not change width of dropdown to that of the activator
+            hover: true, // Activate on hover
+            gutter: 300, // Spacing from edge
+            belowOrigin: false, // Displays dropdown below the button
+            alignment: 'right', // Displays dropdown with edge aligned to the left of button
+            stopPropagation: false // Stops event propagation
+        }
+    );
+</script> -->
+

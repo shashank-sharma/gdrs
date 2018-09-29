@@ -9,5 +9,6 @@ urlpatterns = [
     url(r'^users', UserViewSet),
     url(r'^nearest_request', nearest_request),
     url(r'^driver_login', accountviews.driver_login),
-    url(r'^client_login', accountviews.login)
+    url(r'^client_login_check', accountviews.client_login_check),
+    url(r'^client_login', accountviews.login),
 ]
