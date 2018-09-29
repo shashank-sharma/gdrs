@@ -1,29 +1,30 @@
 
 <div class="container">
-  {{inputCount}}
   <div class="input1" *ngIf="inputCount == 1">
   <div class="input-field col s12">
     <i class="material-icons prefix" style="line-height: 0;font-size: 4rem;line-height: 2">devices</i>
     <input placeholder="+91" id="icon_telephone" [(ngModel)]="phoneNumber"
            type="text" class="validate" style="font-size: 4rem;height: 6rem;margin-left: 80px; !important;">
   </div>
-    <a class="btn" (click)="next()" href="javascript: void(0);">Next 1</a>
+    <a class="btn" (click)="next()" href="javascript: void(0);">Next</a>
   </div>
 
 
   <div class="input2" *ngIf="inputCount == 2">
     <div class="input-field col s12">
       <i class="material-icons prefix" style="line-height: 0;font-size: 4rem;line-height: 2">sms</i>
-      <input placeholder="OTP: * * * *" id="sms" type="text" class="validate" style="font-size: 4rem;height: 6rem;margin-left: 80px; !important;">
+      <input placeholder="OTP: * * * *" id="sms" type="text" class="validate" [(ngModel)]="otp"
+             style="font-size: 4rem;height: 6rem;margin-left: 80px; !important;">
     </div>
-    <a class="btn" (click)="next()">Next 2</a>
+    <a class="btn" (click)="next()">Next</a>
   </div>
 
   <div class="input3" *ngIf="inputCount == 3">
   <div class="input-field col s12">
     <i class="material-icons prefix" style="line-height: 0;font-size: 4rem;line-height: 2">lock</i>
-    <input placeholder="Password" id="lock" type="password" class="validate" style="font-size: 4rem;height: 6rem;margin-left: 80px; !important;">
+    <input placeholder="Password" id="lock" type="password" class="validate" [(ngModel)]="password"
+           style="font-size: 4rem;height: 6rem;margin-left: 80px; !important;">
   </div>
-  <a class="btn" (click)="next()">Next 3</a>
+  <a class="btn" (click)="next()">Next</a>
   </div>
 </div>

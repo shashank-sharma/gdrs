@@ -18,6 +18,7 @@ import { GarbageComponent } from './garbage/garbage.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
+import { MapBoxComponent } from './map-box/map-box.component';
 
 
 
@@ -25,7 +26,8 @@ const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'about', component: AboutComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'garbage', component: GarbageComponent}
+  {path: 'garbage', component: GarbageComponent},
+  {path: 'waste', component: WasteTypesComponent}
 ];
 
 
@@ -39,7 +41,8 @@ const appRoutes: Routes = [
     AppComponent,
     AboutComponent,
     RegisterComponent,
-    GarbageComponent
+    GarbageComponent,
+    MapBoxComponent
   ],
   imports: [
     BrowserModule,
