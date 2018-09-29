@@ -89,7 +89,7 @@ getValue(i) {
 	        this.lng = position.coords.longitude;
 	        console.log(this.lat, this.lng);
 	        }
-	    } else { 
+	    }else{ 
 	        this.x.innerHTML = "Geolocation is not supported by this browser.";
 	    }
 	    this.next();
