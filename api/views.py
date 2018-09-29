@@ -64,9 +64,10 @@ def nearest_request_group(request):
     count = 1
 
     keylist = json_data.keys()
+    keylist = list(keylist)
     keylist.sort()
     for key in keylist:
-        final_data.push(json_data[key])
+        final_data.append(json_data[key])
 
     if final_data:
         data = django_serializers.serialize("json", final_data[1:10])
