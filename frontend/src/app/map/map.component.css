@@ -1,0 +1,50 @@
+#map
+{
+    height: 100% !important;
+    width: 100% !important;
+    position: absolute
+}
+.top-right-pane
+{
+    position: absolute;
+    height: 100%;
+    width: 80%;
+    top: 0;
+    margin-left: 20%;
+}
+.top-left-pane
+{
+    height:65px;
+    background-color: #149159;
+    box-shadow: 5px 5px 3px grey;
+}
+.top-pane
+{
+    height:10% !important;
+    background-color: #149159;
+    box-shadow: 5px 5px 3px grey;
+}
+.mid-pane
+{
+    height:80%;
+    background-color: aqua;
+}
+.bottom-pane
+{
+    height:10%;
+    background-color:black;
+    bottom:0;
+}
+.user-view
+{
+    height: 200px !important;
+}
+@media screen and (max-width: 980px) {
+    .top-right-pane
+    {
+        height:100vh;
+        width:100%;
+        margin:0;
+        padding:0;
+    }
+}

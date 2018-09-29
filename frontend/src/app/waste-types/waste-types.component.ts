@@ -15,6 +15,7 @@ export class WasteTypesComponent implements OnInit {
 	public lat:any;
 	public lng:any;
 
+
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
@@ -94,3 +95,4 @@ getValue(i) {
 	    this.next();
 	}
 }
+

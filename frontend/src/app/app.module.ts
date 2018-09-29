@@ -34,6 +34,8 @@ const appRoutes: Routes = [
   {path: 'garbage', component: GarbageComponent},
   {path: 'waste', component: WasteTypesComponent},
   {path: 'admin', component: AdminComponent},
+  {path: 'worker-login' , component:WorkerloginComponent},
+  {path: 'mapbox' , component:MapBoxComponent},
   {path: 'map', component: MapBoxComponent}
 ];
 
