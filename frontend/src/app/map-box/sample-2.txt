@@ -33,7 +33,7 @@ export class MapBoxComponent implements OnInit{
 
   /// default settings
   map: mapboxgl.Map;
-  style = 'mapbox://styles/mapbox/light-v9';
+  style = 'mapbox://styles/mapbox/streets-v9';
   lat = -83.093;
   lng = 42.376;
   message = 'Hello World!';
@@ -52,7 +52,7 @@ export class MapBoxComponent implements OnInit{
       container: 'map',
       style: this.style,
       zoom: 13,
-      center: [this.lat, this.lng]
+      center: [this.lng, this.lat]
     });
 
     this.map.on('load', () => {
@@ -171,13 +171,6 @@ export class MapBoxComponent implements OnInit{
       }, 'waterway-label');
 
 
-      const marker = document.getElementById('#map');
-
-      // Create a new marker
-      const truckMarker = new mapboxgl.Marker(marker)
-        .setLngLat(this.truckLocation)
-        .addTo(this.map);
-
 
     });
   }
@@ -202,20 +195,8 @@ export class MapBoxComponent implements OnInit{
     const httpOptions = {
     };
 
-    this.http.get(this.assembleQueryURL(), httpOptions).subscribe((data: any) => {
-      let routeGeoJSON = turf.featureCollection([turf.feature(data.trips[0].geometry)]);
-      if (!data.trips[0]) {
-        routeGeoJSON = this.nothing;
-      } else {
-        // Update the `route` source by getting the route source
-        // and setting the data equal to routeGeoJSON
-        this.map.getSource('route')
-          .setData(routeGeoJSON);
-      }
-
-      if (data.waypoints.length === 12) {
-        window.alert('Maximum number of points reached. Read more at mapbox.com/api-documentation/#optimization.');
-      }
+    this.http.get(this.assembleQueryURL(), httpOptions).subscribe((response) => {
+      console.log(response);
     }, (error) => {
       console.log(error);
     });

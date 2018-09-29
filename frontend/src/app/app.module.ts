@@ -21,6 +21,7 @@ import {FormsModule} from '@angular/forms';
 import { MapBoxComponent } from './map-box/map-box.component';
 import { WorkerloginComponent } from './workerlogin/workerlogin.component';
 import { AdminComponent } from './admin/admin.component';
+import {MapService} from './map.service';
 
 
 
@@ -30,7 +31,8 @@ const appRoutes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'garbage', component: GarbageComponent},
   {path: 'waste', component: WasteTypesComponent},
-  {path: 'admin', component: AdminComponent}
+  {path: 'admin', component: AdminComponent},
+  {path: 'map', component: MapBoxComponent}
 ];
 
 
