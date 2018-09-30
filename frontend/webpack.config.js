@@ -151,7 +151,10 @@ module.exports = {
     "filename": "[name].bundle.js",
     "chunkFilename": "[id].chunk.js",
     "crossOriginLoading": false,
-    "publicPath":"http://niti.herokuapp.com/static/ang/"
+ 
+    //"publicPath":"http://127.0.0.1:8000/static/ang/"
+
+    // "publicPath":"http://niti.herokuapp.com/static/ang/"
 
   },
   "module": {
@@ -540,7 +543,10 @@ module.exports = {
   },
   "devServer": {
     "historyApiFallback": true,
-    "publicPath":  "http://niti.herokuapp.com/static/ang/",
+
+    //"publicPath":  "http://127.0.0.1:8000/static/ang/",
+
+    //"publicPath":  "http://niti.herokuapp.com/static/ang/",
 
   }
 };

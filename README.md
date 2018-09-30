@@ -1,39 +1,24 @@
-`cd frontend`
+## Introduction
 
-`npm install`
+### Technologies Used
 
-**angular set up ho jayega
+1. Django Rest Framework with PostgreSQL as Backend
+2. Angular 5 as frontend and deployed on Heroku. Later planning to use AWS S3 for hosting static files
+3. Android app with firebase with real time database
 
-Create local_settings.py and type:
+### How to test ?
 
-```
-import os
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+1. Clone the repository
+2. `cd frontend` - To switch to Angular code
+3. `npm install` - To install all the dependencies
+4. `npm run start` - To start the server (We use ng eject to get webpack services for deployment)
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+### What about backend ?
 
-DEBUG = True
+Our backend server is live and accepting all the calls (DRF based server). Code can be viewed from root folder by accessing their respective apps.
 
-```
+Backend link: http://niti.herokuapp.com
 
+### What next ?
 
-
-Now do
-`python manage.py makemigrations`
-
-`python manage.py migrate`
-
-
-
-
-In future if you edit anything in angular then do:
-
-`sh rebuild.sh`
-
-Then again do python manage.py runserver
-
+Our code is on development and not live means it is still in development so there are missing code pieces which needs to be integrated.
