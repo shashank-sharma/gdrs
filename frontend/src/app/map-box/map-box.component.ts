@@ -15,6 +15,7 @@ declare var $: any;
 export class MapBoxComponent implements OnInit{
 
   public clicked = false;
+  public zone: any;
 
 
   public truckLocation = [-83.093, 42.376];
@@ -230,7 +231,7 @@ export class MapBoxComponent implements OnInit{
       }
 
       if (data.waypoints.length === 12) {
-        window.alert('Maximum number of points reached. Read more at mapbox.com/api-documentation/#optimization.');
+        console.log('Maximum number of points reached. Read more at mapbox.com/api-documentation/#optimization.');
       }
     }, (error) => {
       console.log(error);
@@ -316,6 +317,32 @@ export class MapBoxComponent implements OnInit{
       if (response[0]['pk']) {
         this.newDropoff({lng: parseFloat(response[0]['fields']['long']), lat: parseFloat(response[0]['fields']['lat'])});
         this.updateDropoffs(this.dropoffs);
+        this.zone = {lng: parseFloat(response[0]['fields']['long']), lat: parseFloat(response[0]['fields']['lat'])};
+        this.getAllZones();
+      } else {
+        alert('Error');
+      }
+    }, (error) => {
+      console.log(error);
+    });
+  }
+
+  getAllZones() {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+      withCredentials: true
+    };
+    this.http.post('http://niti.herokuapp.com/api/nearest_request_group', {'lat': this.zone['lat'], 'lon': this.zone['lng']}, httpOptions).subscribe((response: any) => {
+      console.log(response);
+      if (response[0]['pk']) {
+        for(let i = 0; i < response.length; i++) {
+          setTimeout(() => {
+            this.newDropoff({lng: parseFloat(response[i]['fields']['long']), lat: parseFloat(response[i]['fields']['lat'])});
+            this.updateDropoffs(this.dropoffs);
+          }, 2000 + (i * 2000));
+        }
       } else {
         alert('Error');
       }
