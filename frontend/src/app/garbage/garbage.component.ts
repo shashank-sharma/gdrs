@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-garbage',
@@ -18,7 +19,7 @@ export class GarbageComponent implements OnInit {
   public password = '';
   public registrationStatus = false;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
   }
@@ -32,7 +33,7 @@ export class GarbageComponent implements OnInit {
     };
     this.http.post('http://niti.herokuapp.com/api/client_login_check', {'phone_number': this.phoneNumber}, httpOptions).subscribe((response) => {
       if (response['status'] == 'true') {
-        this.inputCount += 2;
+        this.inputCount += 3;
       } else {
         this.inputCount += 1;
       }
@@ -67,11 +68,7 @@ export class GarbageComponent implements OnInit {
         console.log(error);
       });
     } else {
-      this.http.post('http://niti.herokuapp.com/api/v1/users', {'phone_number': this.phoneNumber, 'password': this.password}, httpOptions).subscribe((response) => {
-        console.log('authenticaated');
-      }, (error) => {
-        console.log(error);
-      });
+      this.register();
     }
   }
   register()
@@ -82,9 +79,9 @@ export class GarbageComponent implements OnInit {
       }),
       withCredentials: true
     };
-    this.http.post('http://niti.herokuapp.com/api/v1/users', {'phone_number': this.phoneNumber, 'password':this.password, 'first_name':this.firstname,'last_name':this.lastname, 'gender':this.gender,'is_client':true}, httpOptions).subscribe((response) => {
-      if (response['status'] == 'true') {
-        this.inputCount += 2;
+    this.http.post('http://niti.herokuapp.com/api/v1/users/', {'phone_number': this.phoneNumber, 'password':this.password, 'first_name':this.firstname,'last_name':this.lastname, 'gender':this.gender,'is_client':true}, httpOptions).subscribe((response) => {
+      if (response) {
+        this.router.navigate(['waste']);
       } else {
         this.inputCount += 1;
       }
@@ -101,8 +98,8 @@ export class GarbageComponent implements OnInit {
       this.validateOtp();
       this.registrationStatus = true;
     } else if (this.inputCount == 3) {
-      this.register();
-    }else if (this.inputCount == 4) {
+      this.inputCount += 1;
+    } else if (this.inputCount == 4) {
       this.validatePassword();
     }
   }

@@ -25,7 +25,7 @@
     <hr style = "border-color: green">
     <div class = "container" style = "padding-top: 100px">
       <div class="row">
-        <form class="col s12">
+        <div class="col s12">
           <div class="row">
             <div class="input-field col s6">
               <i class="material-icons prefix">account_circle</i>
@@ -48,11 +48,11 @@
               <label for="icon_telephone">Email address</label>
             </div>
           </div>
-        </form>
+        </div>
         <div class="row">
           <div class="col s2 m4 l4"></div>
           <div class="col s4 m4 l4">
-            <a class="waves-effect waves-light btn-large green" href="javascript:void(0)" (click)="register()"><i class="material-icons right">arrow_forward</i>Register</a>
+            <a class="waves-effect waves-light btn-large green" href="javascript:void(0)" (click)="next()"><i class="material-icons right">arrow_forward</i>Register</a>
           </div>
           <div class="col s6 m4 l4"></div>
         </div>
@@ -60,30 +60,6 @@
     </div>
     <br><br><br><br>
     <hr style = "border-color:">
-    <footer class="page-footer fColor">
-      <div class="container">
-        <div class="row">
-          <div class="col l6 s12">
-            <h5 class="green-text">GDRS (Garbage Disposal and Retrieval System)</h5>
-            <p class="green-text text-darken-4">Send Garbage, End Garbage.</p>
-          </div>
-          <div class="col l4 offset-l2 s12">
-            <h5 class="green-text">Quick Links</h5>
-            <ul>
-              <li><a class="green-text text-darken-4" href="#!">About Us</a></li>
-              <li><a class="green-text text-darken-4" href="#!">Request Service</a></li>
-              <li><a class="green-text text-darken-4" href="#!">Contact Us</a></li>
-              <li><a class="green-text text-darken-4" href="#!">FAQs</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="footer-copyright">
-        <div class="container">
-          © 2018 Copyright Text
-        </div>
-      </div>
-    </footer>
 
 
 
@@ -94,6 +70,6 @@
     <input placeholder="Password" id="lock" type="password" class="validate" [(ngModel)]="password"
            style="font-size: 4rem;height: 6rem;margin-left: 80px; !important;">
   </div>
-  <a class="btn" routerLink="waste">Next</a>
+  <a class="btn" (click)="next()">Next</a>
   </div>
 </div>
