@@ -11,6 +11,10 @@ export class GarbageComponent implements OnInit {
   public inputCount = 1;
   public phoneNumber = '';
   public otp = '';
+  public firstname='';
+  public lastname='';
+  public gender='';
+  public mail='';
   public password = '';
   public registrationStatus = false;
 
@@ -70,6 +74,25 @@ export class GarbageComponent implements OnInit {
       });
     }
   }
+  register()
+  {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+      withCredentials: true
+    };
+    this.http.post('http://niti.herokuapp.com/api/v1/users', {'phone_number': this.phoneNumber, 'password':this.password, 'first_name':this.firstname,'last_name':this.lastname, 'gender':this.gender,'is_client':true}, httpOptions).subscribe((response) => {
+      if (response['status'] == 'true') {
+        this.inputCount += 2;
+      } else {
+        this.inputCount += 1;
+      }
+    }, (error) => {
+      console.log(error);
+    });
+
+  }
 
   next() {
     if(this.inputCount == 1) {
@@ -78,6 +101,8 @@ export class GarbageComponent implements OnInit {
       this.validateOtp();
       this.registrationStatus = true;
     } else if (this.inputCount == 3) {
+      this.register();
+    }else if (this.inputCount == 4) {
       this.validatePassword();
     }
   }

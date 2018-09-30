@@ -18,8 +18,77 @@
     </div>
     <a class="btn" (click)="next()">Next</a>
   </div>
+  <div class="input4" *ngIf="inputCount == 3">
 
-  <div class="input3" *ngIf="inputCount == 3">
+    <h1 class = "green-text text-darken-4" style = "font-size: 48px; padding-top: 50px; padding-left: 300px">
+      Register yourself </h1>
+    <hr style = "border-color: green">
+    <div class = "container" style = "padding-top: 100px">
+      <div class="row">
+        <form class="col s12">
+          <div class="row">
+            <div class="input-field col s6">
+              <i class="material-icons prefix">account_circle</i>
+              <input id="icon_prefix" type="text" class="validate" [(ngModel)]="firstname">
+              <label for="icon_prefix">First Name</label>
+            </div>
+            <div class="input-field col s6">
+              <i class="material-icons prefix">account_circle</i>
+              <input id="icon_prefix" type="text" class="validate" [(ngModel)]="lastname">
+              <label for="icon_prefix">Last Name</label>
+            </div>
+            <div class="input-field col s6">
+              <i class="material-icons prefix">face</i>
+              <input id="icon_prefix" type="text" class="validate" [(ngModel)]="gender">
+              <label for="icon_prefix">Gender</label>
+            </div>
+            <div class="input-field col s6">
+              <i class="material-icons prefix">devices</i>
+              <input id="icon_telephone" type="tel" class="validate"[(ngModel)]="mail">
+              <label for="icon_telephone">Email address</label>
+            </div>
+          </div>
+        </form>
+        <div class="row">
+          <div class="col s2 m4 l4"></div>
+          <div class="col s4 m4 l4">
+            <a class="waves-effect waves-light btn-large green" href="javascript:void(0)" (click)="register()"><i class="material-icons right">arrow_forward</i>Register</a>
+          </div>
+          <div class="col s6 m4 l4"></div>
+        </div>
+      </div>
+    </div>
+    <br><br><br><br>
+    <hr style = "border-color:">
+    <footer class="page-footer fColor">
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="green-text">GDRS (Garbage Disposal and Retrieval System)</h5>
+            <p class="green-text text-darken-4">Send Garbage, End Garbage.</p>
+          </div>
+          <div class="col l4 offset-l2 s12">
+            <h5 class="green-text">Quick Links</h5>
+            <ul>
+              <li><a class="green-text text-darken-4" href="#!">About Us</a></li>
+              <li><a class="green-text text-darken-4" href="#!">Request Service</a></li>
+              <li><a class="green-text text-darken-4" href="#!">Contact Us</a></li>
+              <li><a class="green-text text-darken-4" href="#!">FAQs</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+          © 2018 Copyright Text
+        </div>
+      </div>
+    </footer>
+
+
+
+  </div>
+  <div class="input3" *ngIf="inputCount == 4">
   <div class="input-field col s12">
     <i class="material-icons prefix" style="line-height: 0;font-size: 4rem;line-height: 2">lock</i>
     <input placeholder="Password" id="lock" type="password" class="validate" [(ngModel)]="password"
