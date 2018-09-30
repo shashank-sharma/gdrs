@@ -7,7 +7,7 @@ class UserSerializer(ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('phone_number', 'password')
+        fields = ('__all__')
 
 
 class GarbageStatusSerializer(ModelSerializer):

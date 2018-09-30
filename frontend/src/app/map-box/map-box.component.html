@@ -1,9 +1,35 @@
-<!--<input type="text" [(ngModel)]="message" placeholder="your message...">-->
-<!--<h1>Markers</h1>-->
-<!--<div *ngFor="let marker of markers | async">-->
-  <!--<button (click)="flyTo(marker)">{{ marker.properties.message }}</button>-->
-  <!--<button (click)="removeMarker(marker)">Delete</button>-->
-<!--</div>-->
+<!--<div id='map' class='contain'></div>-->
 
-<!--<div class="map" id="map"></div>-->
-<div id='map' class='contain'></div>
+<section id="mappo">
+
+  <ul id="slide-out" class="side-nav fixed">
+    <li>
+      <div class="top-left-pane">
+
+      </div>
+    </li>
+    <li><div class="user-view">
+      <div class="background">
+        <img src="https://images.pexels.com/photos/302769/pexels-photo-302769.jpeg?auto=compress&cs=tinysrgb&h=350" height="400px">
+      </div>
+    </div></li>
+    <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+    <li><a href="#!">Second Link</a></li>
+    <li><div class="divider"></div></li>
+    <li><a class="subheader">Subheader</a></li>
+    <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+  </ul>
+  <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+  <div class="top-right-pane">
+    <div class="top-pane">
+
+    </div>
+    <div class="mid-pane">
+      <div id="hide-map" *ngIf="clicked == false" (click)="changeStatus()"><i class="material-icons hide-icons-map">play_arrow</i></div>
+      <div id='map' class='contain'></div>
+    </div>
+    <div class="bottom-pane">
+
+    </div>
+  </div>
+</section>
