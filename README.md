@@ -17,8 +17,6 @@
 
 Our backend server is live and accepting all the calls (DRF based server). Code can be viewed from root folder by accessing their respective apps.
 
-Backend link: http://niti.herokuapp.com
-
 ### What next ?
 
 Our code is on development and not live means it is still in development so there are missing code pieces which needs to be integrated.
