@@ -4,7 +4,6 @@
 
 1. Django Rest Framework with PostgreSQL as Backend
 2. Angular 5 as frontend and deployed on Heroku. Later planning to use AWS S3 for hosting static files
-3. Android app with firebase with real time database
 
 ### How to test ?
 
@@ -20,3 +19,5 @@ Our backend server is live and accepting all the calls (DRF based server). Code 
 ### What next ?
 
 Our code is on development and not live means it is still in development so there are missing code pieces which needs to be integrated.
+
+For Pune Smart City Hackathon Finals 2018
